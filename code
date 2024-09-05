@@ -1,0 +1,56 @@
+#include <Servo.h>
+
+// Define the servo objects
+Servo baseServo;      // Base rotation
+Servo shoulderServo;  // Shoulder joint
+Servo elbowServo;     // Elbow joint
+Servo gripperServo;   // Gripper for holding objects
+
+// Define the pins for each servo
+const int basePin = 3;
+const int shoulderPin = 5;
+const int elbowPin = 6;
+const int gripperPin = 9;
+
+void setup() {
+  // Attach servos to the corresponding pins
+  baseServo.attach(basePin);
+  shoulderServo.attach(shoulderPin);
+  elbowServo.attach(elbowPin);
+  gripperServo.attach(gripperPin);
+
+  // Initialize the servos to a neutral position
+  baseServo.write(90);
+  shoulderServo.write(90);
+  elbowServo.write(90);
+  gripperServo.write(90);
+
+  Serial.begin(9600); // Initialize serial communication
+}
+
+void loop() {
+  // Example movements for the robotic arm
+
+  // Base rotates left
+  baseServo.write(45);
+  delay(1000);
+
+  // Shoulder moves up
+  shoulderServo.write(120);
+  delay(1000);
+
+  // Elbow bends
+  elbowServo.write(60);
+  delay(1000);
+
+  // Gripper closes
+  gripperServo.write(30);
+  delay(1000);
+
+  // Reset to neutral position
+  baseServo.write(90);
+  shoulderServo.write(90);
+  elbowServo.write(90);
+  gripperServo.write(90);
+  delay(1000);
+}
